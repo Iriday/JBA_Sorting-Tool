@@ -1,27 +1,24 @@
 package sorting
 
 import java.util.*
+import sorting.DataType.*
 
 fun main(args: Array<String>) {
     run(Args().also { it.main(args) })
 }
 
 fun run(parsedArgs: Args) {
-    when (parsedArgs.dataType) {
-        "long" -> outputNumbersInfo(readNumbersFromConsole(Scanner(System.`in`)))
-        "word" -> println("Not implemented yed")
-        "line" -> println("Not implemented yet")
+    val statistic = when (parsedArgs.dataType) {
+        LONG -> processNumbers(readNumbersFromConsole(Scanner(System.`in`)))
+        WORD, LINE -> throw NotImplementedError()
     }
+    print(statistic)
 }
 
-fun readNumbersFromConsole(scn: Scanner): List<Long> {
-    return scn.asSequence().map { it.toLong() }.toList()
-}
+fun readNumbersFromConsole(scn: Scanner) = scn.asSequence().map { it.toLong() }.toList()
 
-fun outputNumbersInfo(nums: List<Long>) {
+fun processNumbers(nums: List<Long>): Statistic {
     val max = nums.maxOrNull() ?: throw IllegalArgumentException("The list is empty")
     val occurs = nums.count { it == max }
-
-    println("Total numbers: ${nums.size}.")
-    println("The greatest number: $max ($occurs time(s)).")
+    return Statistic(max.toString(), occurs, nums.size, LONG)
 }
