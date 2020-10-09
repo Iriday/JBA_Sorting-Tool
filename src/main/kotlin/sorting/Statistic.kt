@@ -7,7 +7,7 @@ class Statistic(val max: String, val occurs: Int, val total: Int, val type: Data
         return when (type) {
             LONG -> "Total numbers: $total.\nThe greatest number: $max ($occurs time(s))."
             WORD -> "Total words: $total.\nThe longest word: $max ($occurs times(s))."
-            LINE -> throw NotImplementedError()
+            LINE -> "Total lines: $total.\nThe longest line:\n$max\n($occurs times(s))."
         }
     }
 }
