@@ -11,6 +11,7 @@ repositories {
     mavenCentral()
 }
 dependencies {
+    implementation("com.github.ajalt.clikt:clikt:3.0.1")
     testImplementation(kotlin("test-junit5"))
 }
 tasks.withType<KotlinCompile>() {

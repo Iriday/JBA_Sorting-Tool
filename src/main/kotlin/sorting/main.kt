@@ -2,8 +2,16 @@ package sorting
 
 import java.util.*
 
-fun main() {
-    outputNumbersInfo(readNumbersFromConsole(Scanner(System.`in`)))
+fun main(args: Array<String>) {
+    run(Args().also { it.main(args) })
+}
+
+fun run(parsedArgs: Args) {
+    when (parsedArgs.dataType) {
+        "long" -> outputNumbersInfo(readNumbersFromConsole(Scanner(System.`in`)))
+        "word" -> println("Not implemented yed")
+        "line" -> println("Not implemented yet")
+    }
 }
 
 fun readNumbersFromConsole(scn: Scanner): List<Long> {
