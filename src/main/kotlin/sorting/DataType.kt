@@ -1,3 +1,3 @@
 package sorting
 
-enum class DataType { LONG, WORD, LINE }
+enum class DataType(val secondName: String) { LONG("number"), WORD("word"), LINE("line") }
