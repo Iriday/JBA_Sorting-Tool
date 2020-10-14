@@ -12,5 +12,5 @@ fun run(parsedArgs: Args) {
         WORD -> Data(readWordsFromConsole(), WORD, parsedArgs.sortingType)
         LINE -> Data(readLinesFromConsole(), LINE, parsedArgs.sortingType)
     }
-    print(data)
+    parsedArgs.outputFile?.writeText(data.toString()) ?: print(data)
 }
