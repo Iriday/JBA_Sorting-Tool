@@ -4,11 +4,11 @@ import java.util.*
 import kotlin.collections.LinkedHashMap
 import kotlin.math.roundToInt
 
-fun readLongsFromConsole() = readWordsFromConsole().mapNotNull { v ->
+fun readLongs(scn: Scanner) = readWords(scn).mapNotNull { v ->
     v.toLongOrNull().also { if (it == null) println(""""$v" is not a long. It will be skipped.""") }
 }
-fun readWordsFromConsole() = Scanner(System.`in`).asSequence().toList()
-fun readLinesFromConsole() = Scanner(System.`in`).useDelimiter("\n").asSequence().toList()
+fun readWords(scn: Scanner) = scn.asSequence().toList()
+fun readLines(scn: Scanner) = scn.useDelimiter("\n").asSequence().toList()
 
 fun <T> count(data: List<T>) = LinkedHashMap<T, Int>().also { data.forEach { v -> it[v] = (it[v] ?: 0) + 1 } }
 

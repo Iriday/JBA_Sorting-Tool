@@ -21,6 +21,10 @@ class Args : CliktCommand() {
         .choice("natural" to NATURAL, "byCount" to BY_COUNT, ignoreCase = true)
         .default(NATURAL)
 
+    val inputFile by option("-inputFile")
+        .help("File to read data")
+        .file(mustExist = true, canBeFile = true, canBeDir = false, mustBeReadable = true)
+
     val outputFile by option("-outputFile")
         .help("File to output result")
         .file()
@@ -37,12 +41,13 @@ class Args : CliktCommand() {
         }
         checkArg("-dataType", "data type")
         checkArg("-sortingType", "sorting type")
+        checkArg("-inputFile", "input file")
         checkArg("-outputFile", "output file")
 
         val filteredArgs = mutableListOf<String>()
         var i = 0
         while (i < args.size) {
-            if (args[i] == "-dataType" || args[i] == "-sortingType" || args[i] == "-outputFile") {
+            if (args[i] == "-dataType" || args[i] == "-sortingType" || args[i] == "-inputFile" || args[i] == "-outputFile") {
                 filteredArgs.add(args[i++])
                 filteredArgs.add(args[i++])
                 continue
